@@ -1,7 +1,8 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler
+public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     [SerializeField] private RectTransform rectTransform;
     private Rect inputFieldRect;
@@ -9,11 +10,15 @@ public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler
     private bool canDrag;
     private Vector2 startMousePos;
     private Vector2 anchoredPos;
+    
+    private const float SLIDE_DURATION = 0.5f;
+    private const float SLIDE_THRESHOLD = 400f;
 
     private void Awake()
     {
         inputFieldRect = UIRectCalculate.RectInfo(rectTransform);
         canDrag = false;
+        anchoredPos = rectTransform.anchoredPosition;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -23,7 +28,7 @@ public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             canDrag = true;
             startMousePos = mousePos;
-            anchoredPos = rectTransform.anchoredPosition;
+            //anchoredPos = rectTransform.anchoredPosition;
         }
         else
         {
@@ -43,7 +48,25 @@ public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             rectTransform.anchoredPosition = anchoredPos + new Vector2(0, dragY);
         }
-        Vector2 mousePos = eventData.position;
-        Vector2 sliderPos = new Vector2(gameObject.transform.position.x, mousePos.y);
+    }
+
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        canDrag = false;
+        float totalDragY = rectTransform.anchoredPosition.y - anchoredPos.y;
+
+        if (totalDragY >= SLIDE_THRESHOLD)
+        {
+            // 슬라이드 업 연출
+            rectTransform.DOAnchorPosY(anchoredPos.y + 1000f, SLIDE_DURATION)
+                .SetEase(Ease.OutCubic);
+        }
+        else
+        {
+            // 원래 위치로 복귀
+            rectTransform.DOAnchorPos(anchoredPos, SLIDE_DURATION)
+                .SetEase(Ease.OutQuad);
+        }
     }
 }

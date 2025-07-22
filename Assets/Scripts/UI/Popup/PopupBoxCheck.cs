@@ -7,17 +7,17 @@ public class PopupBoxCheck : MonoBehaviour
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private RectTransform giftBox;
 
-    private void Awake()
-    {
-        rectTransform.transform.position = new Vector2(rectTransform.transform.position.x, -Screen.height / 2f);
-        giftBox.gameObject.SetActive(false);
-    }
-
-    private IEnumerator Start()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Open();
-    }
+    // private void Awake()
+    // {
+    //     rectTransform.transform.position = new Vector2(rectTransform.transform.position.x, -Screen.height / 2f);
+    //     giftBox.gameObject.SetActive(false);
+    // }
+    //
+    // private IEnumerator Start()
+    // {
+    //     yield return new WaitForSeconds(0.5f);
+    //     Open();
+    // }
 
     private void Open()
     {

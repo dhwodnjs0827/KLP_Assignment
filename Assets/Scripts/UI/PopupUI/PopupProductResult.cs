@@ -41,11 +41,12 @@ public class PopupProductResult : PopupUI
         if (deltaY >= 500f)
         {
             float maskAlpha = Mathf.InverseLerp(930f, 500f, deltaY);
+            product.MaskCanvasGroup.ignoreParentGroups = true;
             product.MaskCanvasGroup.alpha = maskAlpha;
         }
         else
         {
-            product.MaskCanvasGroup.alpha = 1f;
+            product.MaskCanvasGroup.ignoreParentGroups = false;
         }
     }
 }

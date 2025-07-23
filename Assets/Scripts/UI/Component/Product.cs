@@ -1,3 +1,4 @@
+using DataDeclaration;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class Product : MonoBehaviour
     [SerializeField] private TextMeshProUGUI productName;
     [SerializeField] private TextMeshProUGUI price;
     [SerializeField] private Image maskImage;
+    [SerializeField] private Image maskColor;
     
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private CanvasGroup maskCanvasGroup;
@@ -29,6 +31,10 @@ public class Product : MonoBehaviour
         price.text = $"{product.Price:N0}원";
 
         maskImage.sprite = productImage;
+        if (product.Grade >= ProductGrade.S)
+        {
+            maskColor.color = product.GradeColor;
+        }
         
         canvasGroup.alpha = 0f;
     }

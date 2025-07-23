@@ -102,7 +102,7 @@ CanvasGroup:
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &512471945265961989
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +551,7 @@ MonoBehaviour:
   productName: {fileID: 2086020352807477877}
   price: {fileID: 7965446611339541851}
   maskImage: {fileID: 2145658127486265406}
+  maskColor: {fileID: 3456491147760912261}
   canvasGroup: {fileID: 6188886270941287664}
   maskCanvasGroup: {fileID: 5845338693174295767}
 --- !u!1 &4867610731248469758

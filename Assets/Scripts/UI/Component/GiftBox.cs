@@ -21,15 +21,18 @@ public class GiftBox : MonoBehaviour
 
     public void AppearGiftBox()
     {
+        // 스케일 연출
         gameObject.SetActive(true);
         rectTransform.localScale = Vector3.zero;
         rectTransform.DOScale(Vector3.one, doScaleDuration);
 
+        // 등장 연출
         var originPosY = rectTransform.transform.position.y;
         rectTransform.transform.position = new Vector2(rectTransform.transform.position.x,
             rectTransform.transform.position.y + rectTransform.transform.position.y / 2f);
         rectTransform.DOMoveY(originPosY, doMoveYDuration);
 
+        // 흔들기 연출
         rectTransform.DOShakeRotation(doShakeRotationDuration);
     }
 }

@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class UIManager : MonoSingleton<UIManager>
 {
-    protected override void Awake()
+    [SerializeField] private Canvas canvas;
+
+    public void Open<T>() where T: BaseUI
     {
-        base.Awake();
+        T uiPrefab = Resources.Load<T>($"UI/{typeof(T).Name}");
+        T ui = Instantiate(uiPrefab, canvas.transform);
+        ui.transform.position = new Vector2(Screen.width / 2f, Screen.height / 2f);
     }
 }

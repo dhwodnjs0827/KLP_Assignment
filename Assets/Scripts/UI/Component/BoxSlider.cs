@@ -1,10 +1,13 @@
+using System;
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     [SerializeField] private RectTransform rectTransform;
+    [SerializeField] private RectTransform inputField;
     private Rect inputFieldRect;
     
     private bool canDrag;
@@ -13,10 +16,12 @@ public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     
     private const float SLIDE_DURATION = 0.5f;
     private const float SLIDE_THRESHOLD = 400f;
+    
+    public Action<float> OnValueChanged;
 
     private void Awake()
     {
-        inputFieldRect = UIRectCalculate.RectInfo(rectTransform);
+        inputFieldRect = UIRectCalculate.RectInfo(inputField);
         canDrag = false;
         anchoredPos = rectTransform.anchoredPosition;
     }
@@ -28,7 +33,6 @@ public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         {
             canDrag = true;
             startMousePos = mousePos;
-            //anchoredPos = rectTransform.anchoredPosition;
         }
         else
         {
@@ -49,8 +53,7 @@ public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             rectTransform.anchoredPosition = anchoredPos + new Vector2(0, dragY);
         }
     }
-
-
+    
     public void OnPointerUp(PointerEventData eventData)
     {
         canDrag = false;

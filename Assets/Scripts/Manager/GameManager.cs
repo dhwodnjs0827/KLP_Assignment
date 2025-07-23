@@ -10,7 +10,16 @@ public class GameManager : MonoSingleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        
+        InitProductData();
+    }
+
+    private void Start()
+    {
+        UIManager.Instance.Open<PopupBoxCheck>();
+    }
+
+    private void InitProductData()
+    {
         productDict = new Dictionary<ProductGrade, List<ProductSO>>();
         var products = Resources.LoadAll<ProductSO>("Data");
         foreach (var product in products)

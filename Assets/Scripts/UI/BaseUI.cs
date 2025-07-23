@@ -2,8 +2,6 @@ using UnityEngine;
 
 public abstract class BaseUI : MonoBehaviour
 {
-    private Animator animator;
-    
-    public abstract void Open();
-    public abstract void Close();
+    protected abstract void Open();
+    protected abstract void Close();
 }

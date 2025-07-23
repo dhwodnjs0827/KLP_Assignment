@@ -46,13 +46,13 @@ public class GameManager : MonoSingleton<GameManager>
         int randomValue = Random.Range(0, 100);
         switch (randomValue)
         {
-            case < 50:
+            case < 25:
                 grade = ProductGrade.B;
                 break;
-            case < 90:
+            case < 50:
                 grade = ProductGrade.A;
                 break;
-            case < 97:
+            case < 75:
                 grade = ProductGrade.S;
                 break;
             default:

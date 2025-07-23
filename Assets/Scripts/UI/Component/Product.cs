@@ -39,5 +39,9 @@ public class Product : MonoBehaviour
         sequence.Append(gameObject.transform.DOMoveY(originY + 300f, 1f));
         sequence.Join(gameObject.transform.DOScale(originScale, 0.5f));
         sequence.Append(canvasGroup.DOFade(1, 1f));
+        sequence.AppendCallback(() =>
+        {
+            var @void = UIManager.Instance.Open<PopupReceiveProduct>();
+        });
     }
 }

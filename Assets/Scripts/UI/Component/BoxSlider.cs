@@ -21,6 +21,7 @@ public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     private const float SLIDE_THRESHOLD = 400f;
 
     public event Action<float> SlideAction;
+    public event Action OpenAction;
 
     private void Awake()
     {
@@ -86,6 +87,8 @@ public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             
             DOTween.To(() => rectTransform.anchoredPosition.y, x => SlideAction?.Invoke(x), 930f, SLIDE_DURATION)
                 .SetEase(Ease.OutCubic);
+            
+            OpenAction?.Invoke();
         }
         else
         {

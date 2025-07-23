@@ -27,6 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
             if (!productDict.ContainsKey(product.Grade))
             {
                 List<ProductSO> list = new List<ProductSO>();
+                list.Add(product);
                 productDict.Add(product.Grade, list);
             }
             else

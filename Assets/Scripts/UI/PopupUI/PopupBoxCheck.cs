@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PopupBoxCheck : PopupUI
 {
@@ -38,6 +37,9 @@ public class PopupBoxCheck : PopupUI
     {
         giftBox.AppearGiftBox();
         boxSlider.Init();
+        var resultUI = UIManager.Instance.Open<PopupProductResult>();
+        boxSlider.SlideAction += resultUI.FadeEffect;
+        boxSlider.OpenAction += resultUI.Product.AppearEffect;
     }
 
     private void FadeEffect(float deltaY)

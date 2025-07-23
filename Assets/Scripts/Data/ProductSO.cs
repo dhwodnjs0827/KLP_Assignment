@@ -13,6 +13,6 @@ public class ProductSO : ScriptableObject
     public string Id => id;
     public ProductGrade Grade => grade;
     public string Company => company;
-    public string Name => name;
+    public string ProductName => productName;
     public int Price => price;
 }

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0832b425e6fa64ce1b18a6cfe83648d6, type: 3}
-  m_Name: P0001
+  m_Name: P0004
   m_EditorClassIdentifier: 
-  id: P0001
-  grade: 2
-  company: "\uC0E4\uB12C"
-  productName: "\uC0E4\uB12C \uCF54\uCF54 \uB9C8\uB4DC\uBAA8\uC544\uC824 250ml"
-  price: 147600
+  id: P0004
+  grade: 0
+  company: "\uC2A4\uD0C0\uBC85\uC2A4"
+  productName: "\uC2A4\uD0C0\uBC85\uC2A4 \uC544\uBA54\uB9AC\uCE74\uB178"
+  price: 3000

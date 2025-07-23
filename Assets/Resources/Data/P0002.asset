@@ -15,5 +15,5 @@ MonoBehaviour:
   id: P0002
   grade: 2
   company: Apple
-  name: "Apple 2024 \uC5D0\uC5B4\uD31F 4\uC138\uB300"
+  productName: "Apple 2024 \uC5D0\uC5B4\uD31F 4\uC138\uB300"
   price: 238800

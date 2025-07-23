@@ -10,13 +10,12 @@ public class PopupProductResult : PopupUI
     [SerializeField] private CanvasGroup canvasGroup;
 
     private ProductSO data;
-    private Dictionary<ProductGrade, Color> gradeColorDict;
     
     public Product Product => product;
 
     private void Awake()
     {
-        Init();
+        canvasGroup.alpha = 0;
         data = GameManager.Instance.GetRandomProduct();
     }
 
@@ -25,23 +24,10 @@ public class PopupProductResult : PopupUI
         Open();
     }
 
-    private void Init()
-    {
-        gradeColorDict = new Dictionary<ProductGrade, Color>
-        {
-            { ProductGrade.B, Color.blue },
-            { ProductGrade.A, Color.magenta },
-            { ProductGrade.S, Color.yellow },
-            { ProductGrade.SV, Color.red }
-        };
-
-        canvasGroup.alpha = 0;
-    }
-
     protected override void Open()
     {
         product.SetUp(data);
-        gradeColor.color = gradeColorDict[data.Grade];
+        gradeColor.color = data.GradeColor;
     }
 
     protected override void Close()

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Product : MonoBehaviour
 {
     [SerializeField] private Image image;
+    [SerializeField] private Image gradeIcon;
+    [SerializeField] private TextMeshProUGUI gradeText;
     [SerializeField] private TextMeshProUGUI company;
     [SerializeField] private TextMeshProUGUI productName;
     [SerializeField] private TextMeshProUGUI price;
@@ -20,6 +22,8 @@ public class Product : MonoBehaviour
     {
         Sprite productImage = Resources.Load<Sprite>($"Sprites/{product.Id}");
         image.sprite = productImage;
+        gradeIcon.color = product.GradeColor;
+        gradeText.text = product.Grade.ToString();
         company.text = product.Company;
         productName.text = product.ProductName;
         price.text = $"{product.Price:N0}원";

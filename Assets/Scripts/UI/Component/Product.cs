@@ -34,9 +34,9 @@ public class Product : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         float originY = gameObject.transform.position.y;
         var originScale = gameObject.transform.localScale;
-        sequence.Append(gameObject.transform.DOMoveY(originY - 200f, 1f));
+        sequence.Append(gameObject.transform.DOMoveY(originY + 500f, 1f));
         sequence.Join(gameObject.transform.DOScale(originScale * 1.2f, 1.5f));
-        sequence.Append(gameObject.transform.DOMoveY(originY, 1f));
+        sequence.Append(gameObject.transform.DOMoveY(originY + 300f, 1f));
         sequence.Join(gameObject.transform.DOScale(originScale, 0.5f));
         sequence.Append(canvasGroup.DOFade(1, 1f));
     }

@@ -45,13 +45,11 @@ public class BoxSlider : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         Vector2 mousePos = eventData.position;
         if (UIRectCalculate.IsInRect(inputFieldRect, mousePos))
         {
-            Debug.Log("드래그 가능");
             canDrag = true;
             startMousePos = mousePos;
         }
         else
         {
-            Debug.Log("드래그 불가능");
             canDrag = false;
         }
     }
